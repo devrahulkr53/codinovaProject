@@ -1,0 +1,47 @@
+h3 {
+    margin: 0;
+    padding: 5px 10px
+}
+.cart-list-header, .cart-list {
+    display: grid; 
+    grid-template-columns: 25% 25% 25% 25%; 
+    text-align: center;
+}
+
+.cart-list {
+    background-color: white;
+    padding: 8px
+}
+
+.no-products {
+    padding: 20px; 
+    background-color: white; 
+    text-align: center; 
+    text-transform: capitalize;
+}
+
+.total-grid {
+    display: grid; 
+    grid-template-columns: 35% 65%;
+    .total-grid, div {
+        border: 1px solid;
+    }
+    .total-grid {
+        background-color: white;
+    }
+
+}
+
+.action-buttons {
+    display: grid; 
+    grid-template-columns: auto auto;
+    grid-gap: 5px;
+    margin-top: 5px;
+    button {
+        padding: 10px;
+        color: white;
+        cursor: pointer;
+        border: none;
+        border-radius: 3px;
+    }
+}

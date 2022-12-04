@@ -1,0 +1,20 @@
+.container {
+    position: fixed;
+    width: 30%;
+    left: 35%;
+    top: 20px;
+    background-color: white;
+    box-shadow: 8px 8px 20px #bbb;
+    .heading {
+        background-color: black;
+        color: white;
+        padding: 5px 10px;
+        margin: 0
+    }    
+}
+
+table, th, td {
+    border: 1px solid;
+    border-collapse: collapse;
+    text-align: center;
+}
