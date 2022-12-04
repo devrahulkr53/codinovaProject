@@ -1,8 +1,8 @@
-<div *ngIf="isPopupVisible" class="container">
+<div class="container">
     <h1 class="heading">Receipt</h1>
     <div style="padding: 10px;">
         <h3 style="text-align: center">Sale No: 32454</h3>
-        <div>Date: </div>
+        <div>Date: {{date | date:'longDate'}} </div>
         <table style="width: 100%;">
             <thead>
                 <tr>
@@ -13,14 +13,36 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>#</td>
-                    <td>Product</td>
-                    <td>Quantity</td>
-                    <td>Subtotal</td>
+                <tr *ngFor="let item of cart | async; let i = index;">
+                    <td>{{i+1}}</td>
+                    <td>{{item.name}}</td>
+                    <td>{{item.quantity}}</td>
+                    <td>{{+item.price * item.quantity}}</td>
                 </tr>
             </tbody>
         </table>
-        <button style="width: 100%; margin-top: 20px;">Close</button>
+        <div class="subtotal">
+            <div style="display: flex;justify-content: space-between;">
+                <h4>Total Item</h4>
+                <h4>{{cartLength}}</h4>
+            </div>
+            <div>
+                <div style="display: flex;justify-content: space-between;">
+                    <h4>Total</h4>
+                    <h4>{{ (subTotal + ((receiptData.vat/100)*subTotal) + ((receiptData.discount/100)*subTotal)) | number:'1.2-2' }} INR</h4>
+                </div>
+                <div style="display: flex;justify-content: space-between;">
+                    <h4>Vat</h4>
+                    <h4>{{ receiptData.vat | number:'1.2-2' }} %</h4>
+                </div>
+                <div style="display: flex;justify-content: space-between;">
+                    <h4>Discount</h4>
+                    <h4>{{ receiptData.discount | number:'1.2-2' }} %</h4>
+                </div>
+
+            </div>
+            <div></div>
+        </div>
+        <button (click)="onClose()" style="width: 100%; margin-top: 20px;">Close</button>
     </div>
 </div>

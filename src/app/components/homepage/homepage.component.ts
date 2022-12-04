@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { resetCart } from '../cart/state/cart.action';
+import { Cart } from '../cart/state/cart.interface';
 
 @Component({
   selector: 'app-homepage',
@@ -7,8 +10,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomepageComponent implements OnInit {
 
-  products = [
+  isReceiptVisible:any;
+  productsArr = [
     {
+      id:1,
       name: "comuter",
       price: "130",
       category: "computers",
@@ -16,6 +21,7 @@ export class HomepageComponent implements OnInit {
       image: "https://www.shutterstock.com/image-photo/desktop-computer-keyboard-mouse-on-260nw-164253011.jpg"
     },
     {
+      id:2,
       name: "sweater",
       price: "1",
       category: "Clothing",
@@ -23,6 +29,7 @@ export class HomepageComponent implements OnInit {
       image: "https://5.imimg.com/data5/QP/RJ/MY-4283662/fancy-baby-sweater-500x500.jpg"
     },
     {
+      id:3,
       name: "tie",
       price: "46",
       category: "Clothing",
@@ -30,6 +37,7 @@ export class HomepageComponent implements OnInit {
       image: "https://www.shutterstock.com/image-vector/tie-isolated-on-white-background-260nw-1904024269.jpg"
     },
     {
+      id:4,
       name: "jacket",
       price: "190",
       category: "Clothing",
@@ -38,9 +46,15 @@ export class HomepageComponent implements OnInit {
     },
   ]
 
-  constructor() { }
+  constructor(private store: Store<{ cart: Cart }>) {}
 
   ngOnInit(): void {
   }
 
+  onProceedClicked(event:any){
+    this.isReceiptVisible = event;
+    if(!event){
+      this.store.dispatch(resetCart())
+    }
+  }
 }

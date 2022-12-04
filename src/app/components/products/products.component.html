@@ -1,1 +1,10 @@
-<p>products works!</p>
+<div class="card">
+    <div *ngFor="let item of products" (click)="addToCart(item)" class="card-item">
+        <div style="text-align: center; background-color: white; padding: 10px 5px;">
+            <div> {{item.name}} </div>
+            <img [src]="item.image" width="100%" height="80px" alt="">
+            <div class="visible-on-hover">Price : {{item.price}} INR </div>
+            <div class="visible-on-hover">Description : {{item.description}} </div>
+        </div>
+    </div>
+</div>

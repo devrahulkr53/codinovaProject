@@ -1,0 +1,21 @@
+.card {
+    display: grid;
+    grid-template-columns: 20% 20% 20% 20% 20%;
+    grid-gap: 20px;
+    padding: 20px 40px;
+
+    .card-item {
+        border-radius: 8px; 
+        overflow: hidden;
+        cursor: pointer;
+        .visible-on-hover {
+            display: none;
+            text-align: left;
+        }
+    }
+    .card-item:hover {
+        .visible-on-hover {
+            display: block;
+        }
+    }
+}

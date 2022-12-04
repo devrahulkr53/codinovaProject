@@ -6,53 +6,56 @@
         <h3>Quantity</h3>
         <h3 style="text-align: right;">Total</h3>
     </div>
-    <div class="cart-list">
-        <h3> <span style="padding:3px 6px; background-color: darkred; color: white; border-radius: 50px;">&times;</span> Product</h3>
-        <h3 style="text-align: right;">Price</h3>
-        <h3 style="display: flex;justify-content: center;">
-            <button>-</button>
-            <input type="number" style="width: 50px">
-            <button>+</button>
-        </h3>
-        <h3 style="text-align: right;">Total</h3>
-    </div>
+    <section style="height: calc(100vh - 270px); overflow: auto;">
+        <div class="cart-list" *ngFor="let item of cart | async">
+            <h3><span (click)="deleteCart(item)" class="close">&times;</span>Product</h3>
+            <h3 style="text-align: right;">{{item.price}} INR</h3>
+            <h3 style="display: flex;justify-content: center;">
+                <button (click)="updateQuantity(item, item.quantity - 1)">-</button>
+                <input readonly type="number" [value]="item.quantity" style="width: 50px">
+                <button (click)="updateQuantity(item, item.quantity + 1)">+</button>
+            </h3>
+            <h3 style="text-align: right;">{{+item.price * item.quantity}} INR</h3>
+        </div>
+        <h2 *ngIf="!cartLength" class="no-products">THERE ARE NO PRODUCTS</h2>
+    </section>
+    
 
-    <h2 class="no-products">THERE ARE NO PRODUCTS</h2>
 
 
     <!-- Totals -->
     <div class="total-grid">
         <div><h3>Subtotal</h3></div>
         <div class="total-grid">
-            <h3>0.00 EUR</h3>
-            <h3 style="text-align: right;">Items</h3>
+            <h3>{{subTotal}} INR</h3>
+            <h3 style="text-align: right;">{{cartLength}} Items</h3>
         </div>
     </div>
     <div class="total-grid">
         <div><h3>VAT</h3></div>
         <div class="total-grid">
-            <h3><input type="number"></h3>
-            <h3 style="text-align: right;">Items</h3>
+            <h3><input type="text" [(ngModel)]="vat" mask="percent" suffix="%"></h3>
+            <h3 style="text-align: right;">{{ ((vat/100) * subTotal) | number:'1.2-2' }}</h3>
         </div>
     </div>
     <div class="total-grid">
         <div><h3>Discount</h3></div>
         <div class="total-grid">
-            <h3><input type="number"></h3>
-            <h3 style="text-align: right;">Items</h3>
+            <h3><input type="text" [(ngModel)]="discount" mask="percent" suffix="%"></h3>
+            <h3 style="text-align: right;">{{ ((discount/100) * subTotal) | number:'1.2-2' }}</h3>
         </div>
     </div>
     <div class="total-grid">
         <div><h3>Total</h3></div>
         <div class="total-grid">
-            <h3>0.00 EUR</h3>
-            <h3 style="text-align: right;">Items</h3>
+            <h3>{{ (subTotal + ((vat/100)*subTotal) + ((discount/100)*subTotal)) | number:'1.2-2' }}</h3>
+            <!-- <h3 style="text-align: right;">Items</h3> -->
         </div>
     </div>
 
     <div class="action-buttons">
-        <button type="button" style="background-color: darkred;">Cancel Sale</button>
-        <button type="button" style="background-color: green;">Proceed Sale</button>
+        <button type="button" (click)="onCancel()" style="background-color: darkred;">Cancel Sale</button>
+        <button type="button" (click)="onProceed()" style="background-color: green;">Proceed Sale</button>
     </div>
     
 </div>

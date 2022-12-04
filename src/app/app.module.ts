@@ -7,6 +7,10 @@ import { HomepageComponent } from './components/homepage/homepage.component';
 import { CartComponent } from './components/cart/cart.component';
 import { ProductsComponent } from './components/products/products.component';
 import { ReceiptComponent } from './components/receipt/receipt.component';
+import { FormsModule } from '@angular/forms';
+import { StoreModule } from '@ngrx/store';
+import { cartReducer } from './components/cart/state/cart.reducers';
+import { NgxMaskModule, IConfig } from 'ngx-mask'
 
 @NgModule({
   declarations: [
@@ -18,7 +22,10 @@ import { ReceiptComponent } from './components/receipt/receipt.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    StoreModule.forRoot({cart: cartReducer}),
+    NgxMaskModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]

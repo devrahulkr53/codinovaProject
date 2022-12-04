@@ -9,8 +9,9 @@ h3 {
 }
 
 .cart-list {
-    background-color: white;
-    padding: 8px
+    background-color: #ffffff;
+    padding: 8px;
+    margin: 8px 0;
 }
 
 .no-products {
@@ -44,4 +45,13 @@ h3 {
         border: none;
         border-radius: 3px;
     }
+}
+
+.close {
+    padding:1px 6px;
+    margin: 0 2px;
+    background-color: darkred;
+    color: white;
+    border-radius: 50px;
+    cursor: pointer;
 }
