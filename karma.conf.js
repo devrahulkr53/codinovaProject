@@ -25,7 +25,7 @@ module.exports = function (config) {
       suppressAll: true // removes the duplicated traces
     },
     coverageReporter: {
-      dir: require('path').join(__dirname, './coverage/codinova-project'),
+      dir: require('path').join(__dirname, './coverage/ngrx-ecommerce'),
       subdir: '.',
       reporters: [
         { type: 'html' },
