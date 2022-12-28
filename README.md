@@ -1,6 +1,8 @@
-# ngrxEcommerce
+# ngrxEcommerce [ Angular ]
 
+Project Url: https://ngrx-ecommerce-33d8b5.netlify.app/ \
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.2.7.
+![WhatsApp Image 2022-12-28 at 11 15 18 AM](https://user-images.githubusercontent.com/58592540/209764858-8bb69f9d-6235-4ecc-b35e-4d5002c53c3c.jpeg)
 
 ## Development server
 
